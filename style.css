@@ -1,0 +1,341 @@
+/* ==========================
+   RESET
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ==========================
+   GENERAL STYLES
+========================== */
+body {
+  line-height: 1.6;
+  color: #ffffff;
+  background-color: #000;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* ==========================
+   FADE-UP SCROLL ANIMATION
+========================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  border: 3px solid #0cf500;
+  border-radius: 15px;
+  animation: heroBorderGlow 3s infinite alternate-reverse;
+}
+
+/* Video Background */
+#hero video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 15px;
+  opacity: 0.5;
+}
+
+/* Dark overlay to enhance text readability */
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Hero Buttons */
+.btn {
+  text-decoration: none;
+  color: white;
+  background: #4F46E5;
+  padding: 12px 25px;
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #3b36c0;
+}
+
+/* Hero Slideshow */
+#hero img.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+#hero img.slide.active {
+  opacity: 1;
+}
+
+/* Hero Glowing Border Animation */
+@keyframes heroBorderGlow {
+  0% {
+    border-color: #c8ff00;
+    box-shadow: 0 0 20px #07e40b, 0 0 40px #4caf50, 0 0 60px #2196f3;
+  }
+  50% {
+    border-color: #4caf50;
+    box-shadow: 0 0 30px #08bafb, 0 0 60px #4caf50, 0 0 90px #2196f3;
+  }
+  100% {
+    border-color: #2196f3;
+    box-shadow: 0 0 40px #040ff0, 0 0 80px #4caf50, 0 0 120px #2196f3;
+  }
+}
+
+/* ==========================
+   ABOUT SECTION
+========================== */
+#about {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.profile-light {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.8s ease;
+  background: #fff;
+}
+.profile-light img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================
+   SKILLS SECTION
+========================== */
+#skills {
+  padding: 50px 20px;
+  text-align: center;
+}
+.skills-container {
+  max-width: 600px;
+  margin: auto;
+}
+.skill {
+  margin-bottom: 20px;
+}
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress {
+  width: 0;
+  height: 100%;
+  background: #4F46E5;
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
+}
+
+/* ==========================
+   GALLERY SECTION
+========================== */
+#gallery {
+  padding: 50px 20px;
+  text-align: center;
+}
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 1200px;
+  margin: auto;
+}
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.gallery-item:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Lightbox Overlay */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* ==========================
+   REVIEWS SECTION
+========================== */
+#reviews {
+  padding: 50px 20px;
+  background: #333;
+  color: white;
+  text-align: center;
+}
+.reviews-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: auto;
+}
+.review-bar {
+  width: 100%;
+  height: 20px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.review-progress {
+  width: 0;
+  height: 100%;
+  background: #f1c40f;
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
+}
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+#contact {
+  padding: 50px 20px;
+  text-align: center;
+}
+#contact input,
+#contact textarea {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+#contact button {
+  padding: 10px 25px;
+  background: #4F46E5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+#contact button:hover {
+  background: #3b36c0;
+  transform: scale(1.05);
+}
+
+/* ==========================
+   FOOTER
+========================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+}
+
+/* ==========================
+   RESPONSIVE MEDIA QUERIES
+========================== */
+@media(max-width: 1024px) {
+  .gallery-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media(max-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(max-width: 480px) {
+  .gallery-container {
+    grid-template-columns: 1fr;
+  }
+}
